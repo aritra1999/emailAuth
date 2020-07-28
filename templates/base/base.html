@@ -1,0 +1,29 @@
+{% load static %}
+<!doctype html>
+<html lang="en" class="text-gray-900 antialiased leading-tight">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8"/>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <title>Demo | {{ title }}</title>
+</head>
+<style>
+    html, body{
+        min-height: 100% !important;
+    }
+    section{
+        border-radius: 10px !important;
+    }
+</style>
+<body class="min-h-screen bg-gray-100">
+
+    {% include 'base/header.html' %}
+        <div style="padding: 20px;">
+            {% block content %}{% endblock %}
+        </div>
+    {% include 'base/footer.html' %}
+
+    
+</body>
+</html>

@@ -1,0 +1,76 @@
+{% extends "base/base.html" %}
+{% block content %}
+    <section class="text-gray-500 body-font">
+        <div class="container px-10 py-24 mx-auto flex flex-wrap items-center">
+            <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+                <iframe width="100%" height="600px" frameborder="0" marginheight="0" marginwidth="0" title="map"
+                        scrolling="no"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202407.60027351027!2d126.83365998928471!3d37.56404509623918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2012d5c39cf%3A0x7e11eca1405bf29b!2sSeoul%2C%20South%20Korea!5e0!3m2!1sen!2sin!4v1595658456878!5m2!1sen!2sin&"
+                        style="filter: grayscale(1) contrast(1.2) opacity(0.4);"></iframe>
+            </div>
+            <div class="lg:w-2/6 md:w-1/2  flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+                {% if login_error %}
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert" id="login_error">
+                        <span class="block sm:inline">{{ login_error }}</span>
+                        <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                        <svg onclick="document.getElementById('login_error').style.display = 'none'" class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+                    </span>
+                    </div>
+                    <br>
+                {% endif %}
+
+                <div class="bg-gray-200 p-8 rounded-lg">
+                    <h2 class="text-gray-900 text-lg title-font mb-5">Sign In</h2>
+                    <hr>
+                    <br>
+                    <form class="w-full max-w-sm" method="post">{% csrf_token %}
+                        <div class="md:flex md:items-center mb-6">
+                            <div class="md:w-1/4">
+                                <label class="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4"
+                                       for="inline-email">
+                                    Email
+                                </label>
+                            </div>
+                            <div class="md:w-3/4">
+                                <input class="bg-gray-200 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                       id="inline-email" type="email" placeholder="Email" name="email" required/>
+                            </div>
+                        </div>
+                        <div class="md:flex md:items-center mb-6">
+                            <div class="md:w-1/4">
+                                <label class="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4"
+                                       for="inline-username">
+                                    Password
+                                </label>
+                            </div>
+                            <div class="md:w-3/4">
+                                <input class="bg-gray-200 appearance-none border-2 border-gray-400 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                                       id="inline-username" type="password" placeholder="******************" name="password" required/>
+                            </div>
+                        </div>
+
+
+                        <div align="center">
+                            <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none focus:border-purple-800 text-white font-bold py-3 px-10 rounded"
+                                    type="submit">
+                                Sign In
+                            </button>
+                        </div>
+
+                        <br>
+                        <div align="center">
+                            <label class="text-gray-500 font-bold">
+                            <span class="text-sm">Don't have an account? <a class="text-purple-500"
+                                                                            href="{% url 'register' %}">Sign Up</a></span>
+                            </label>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+
