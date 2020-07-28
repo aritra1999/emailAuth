@@ -121,6 +121,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 STATIC_URL = '/static/'
 
 LOGOUT_REDIRECT_URL = '/'
@@ -131,6 +133,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mondalaritra002@gmail.com'
-EMAIL_HOST_PASSWORD = 'captaindeadpool'
+EMAIL_HOST_USER = os.environ.get('TEST_EMAIL')
+EMAIL_HOST_PASSWORD = os.environ.get('TEST_PASS')
 
