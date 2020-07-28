@@ -25,7 +25,7 @@ SECRET_KEY = '!@*2nva@$tsw)2eso!j(596r!w)!5f_#lf7dj!m-r9ikn169@4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['otpauth.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -47,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -136,3 +137,5 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('TEST_EMAIL')
 EMAIL_HOST_PASSWORD = os.environ.get('TEST_PASS')
 
+import django_heroku
+django_heroku.settings(locals())
